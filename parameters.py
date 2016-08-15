@@ -25,6 +25,14 @@ def params():
     return minimum_nest_size, minimum_hole_size
 
 
+def microns():
+
+    # This value should be the pixel resolution of the images be ing analyzed
+    pixel_res = 0.0456
+
+    return pixel_res
+
+
 def csv_save():
 
     # 'path to the csv file which contains the output data'
