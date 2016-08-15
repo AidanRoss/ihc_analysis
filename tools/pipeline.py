@@ -135,7 +135,6 @@ def label_img(img):
     min_hole_size = 500  # Size in Pixels of minimum hole
     min_nest_size, min_hole_size = parameters.params()
 
-
     labeled_img = label(input=masked_bool, connectivity=2, background=0)
     rem_holes = remove_small_holes(labeled_img, min_size=min_hole_size, connectivity=2)
     labeled_img1 = remove_small_objects(rem_holes, min_size=min_nest_size, connectivity=2)
