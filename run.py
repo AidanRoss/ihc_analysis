@@ -48,35 +48,35 @@ def main():
 
     for im in img_files:
         pipeline.display_image(im)
-        # pipeline.save_image(save_path=path, img=im)
-        # nest, area, perimeter, eccentricity, filled_area, avg_area, avg_perim, avg_eccen, avg_filled, roundness,\
-        # circularity, avg_roundness, avg_circularity, tot_area, tot_perim, std_area, std_perimeter, std_eccentricity,\
-        # std_filled_area, std_roundness, std_circularity, name = pipeline.get_data(im)
-        #
-        # output_name.append(name)
-        # output_nest.append(nest)
-        # output_area.append(area)
-        # output_perimeter.append(perimeter)
-        # output_eccentricity.append(eccentricity)
-        # output_filled_area.append(filled_area)
-        # output_roundness.append(roundness)
-        # output_circularity.append(circularity)
-        # out_avg_area.append(avg_area)
-        # out_avg_perim.append(avg_perim)
-        # out_avg_eccen.append(avg_eccen)
-        # out_avg_filled.append(avg_filled)
-        # out_avg_roundness.append(avg_roundness)
-        # out_avg_circularity.append(avg_circularity)
-        #
-        # out_tot_area.append(tot_area)
-        # out_tot_perim.append(tot_perim)
-        #
-        # std_dev_area.append(std_area)
-        # std_dev_perimeter.append(std_perimeter)
-        # std_dev_eccentricity.append(std_eccentricity)
-        # std_dev_filled_area.append(std_filled_area)
-        # std_dev_roundness.append(std_roundness)
-        # std_dev_circularity.append(std_circularity)
+        pipeline.save_image(save_path=path, img=im)
+        nest, area, perimeter, eccentricity, filled_area, avg_area, avg_perim, avg_eccen, avg_filled, roundness,\
+        circularity, avg_roundness, avg_circularity, tot_area, tot_perim, std_area, std_perimeter, std_eccentricity,\
+        std_filled_area, std_roundness, std_circularity, name = pipeline.get_data(im)
+
+        output_name.append(name)
+        output_nest.append(nest)
+        output_area.append(area)
+        output_perimeter.append(perimeter)
+        output_eccentricity.append(eccentricity)
+        output_filled_area.append(filled_area)
+        output_roundness.append(roundness)
+        output_circularity.append(circularity)
+        out_avg_area.append(avg_area)
+        out_avg_perim.append(avg_perim)
+        out_avg_eccen.append(avg_eccen)
+        out_avg_filled.append(avg_filled)
+        out_avg_roundness.append(avg_roundness)
+        out_avg_circularity.append(avg_circularity)
+
+        out_tot_area.append(tot_area)
+        out_tot_perim.append(tot_perim)
+
+        std_dev_area.append(std_area)
+        std_dev_perimeter.append(std_perimeter)
+        std_dev_eccentricity.append(std_eccentricity)
+        std_dev_filled_area.append(std_filled_area)
+        std_dev_roundness.append(std_roundness)
+        std_dev_circularity.append(std_circularity)
 
     output_data = [output_name,
                    output_nest,
@@ -103,7 +103,7 @@ def main():
 
     # print output_data
 
-    # pipeline.write_csv(output_data, save_path='/Users/aidan/Desktop/aidan_summer/Week_Tasks/Week_9')
+    pipeline.write_csv(output_data, save_path='/Users/aidan/Desktop/aidan_summer/Week_Tasks/Week_9')
 
     ##output_path = '/Users/engs1348/Raquel/githubRepositoryWorkingFiles/Histology_Aidan'
     #write_csv(output_data, save_path=output_path)
