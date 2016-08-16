@@ -12,7 +12,7 @@ def path():
 def save():
 
     # 'path to save the images'  # This should be the path where you would like images to be saved
-    save_path = '/Users/aidan/Desktop/aidan_summer/Week_Tasks/Week_9/save_images/segment1/'
+    save_path = '/Users/aidan/Desktop/aidan_summer/Week_Tasks/Week_9/save_images/segment2/'
 
     return save_path
 
@@ -28,14 +28,15 @@ def params():
 def microns():
 
     # This value should be the pixel resolution of the images be ing analyzed
-    pixel_res = 0.0456
+    pixel_res = 0.0456  # microns per pixel_x
+    pixel_size = pixel_res**2
 
-    return pixel_res
+    return pixel_res, pixel_size
 
 
 def csv_save():
 
     # 'path to the csv file which contains the output data'
     csv_path = '/Users/aidan/Desktop/aidan_summer/Week_Tasks/Week_9'
-
-    return csv_path
+    micron_csv = '/Users/aidan/Desktop/aidan_summer/Week_Tasks/Week_9'
+    return csv_path, micron_csv

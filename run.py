@@ -46,12 +46,21 @@ def main():
     std_dev_roundness = []
     std_dev_circularity = []
 
+    area_micron = []
+    avg_area_micron = []
+
+    perim_micron = []
+    avg_perim_micron = []
+
+    circ_micron = []
+
     for im in img_files:
         pipeline.display_image(im)
         pipeline.save_image(save_path=path, img=im)
         nest, area, perimeter, eccentricity, filled_area, avg_area, avg_perim, avg_eccen, avg_filled, roundness,\
         circularity, avg_roundness, avg_circularity, tot_area, tot_perim, std_area, std_perimeter, std_eccentricity,\
-        std_filled_area, std_roundness, std_circularity, name = pipeline.get_data(im)
+        std_filled_area, std_roundness, std_circularity, name, micron_a, avg_micron_a, p_micron,\
+        avg_p_micron, circularity_micron = pipeline.get_data(im)
 
         output_name.append(name)
         output_nest.append(nest)
@@ -78,6 +87,14 @@ def main():
         std_dev_roundness.append(std_roundness)
         std_dev_circularity.append(std_circularity)
 
+        area_micron.append(micron_a)
+        avg_area_micron.append(avg_micron_a)
+
+        perim_micron.append(p_micron)
+        avg_perim_micron.append(avg_p_micron)
+
+        circ_micron.append(circularity_micron)
+
     output_data = [output_name,
                    output_nest,
                    output_area,
@@ -101,12 +118,20 @@ def main():
                    std_dev_filled_area,
                    out_avg_filled]
 
+    output_micron_data = [output_name,
+                          area_micron,
+                          avg_area_micron,
+                          perim_micron,
+                          avg_perim_micron,
+                          circularity_micron]
+
     # print output_data
+    csv_save, micron_csv = parameters.csv_save()
+    pipeline.write_csv(output_data, save_path=csv_save)
+    pipeline.write_csv(output_micron_data, save_path=micron_csv, micron=True)
 
-    pipeline.write_csv(output_data, save_path='/Users/aidan/Desktop/aidan_summer/Week_Tasks/Week_9')
-
-    ##output_path = '/Users/engs1348/Raquel/githubRepositoryWorkingFiles/Histology_Aidan'
-    #write_csv(output_data, save_path=output_path)
+    # output_path = '/Users/engs1348/Raquel/githubRepositoryWorkingFiles/Histology_Aidan'
+    # write_csv(output_data, save_path=output_path)
 
     plt.show()
 

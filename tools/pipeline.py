@@ -178,6 +178,7 @@ def get_data(img):
     cf = 0.53
     labels, mask, orig, ihc, bin3, float_img = label_img(img)
     props = regionprops(labels)
+    pixel_res, pixel_size = parameters.microns()
 
     area = []
     perimeter = []
@@ -218,17 +219,30 @@ def get_data(img):
     std_dev_circularity = np.std(circularity)
     name = os.path.basename(os.path.normpath(img))
 
+    area_microns = [pixel_size * a for a in area]
+    avg_area_microns = np.mean(area_microns)
+    perimeter_microns = [pixel_res * p for p in perimeter]
+    avg_perimeter_microns = np.mean(perimeter_microns)
+    new_list1 = [4 * pi * a for a in area_microns]
+    circularity_micron = map(truediv, new_list1, (np.square(perimeter_microns)))
+
     # micron_area = [x * 0.1 for x in area]
 
     return ns, area, perimeter, eccentricity, filled_area, avg_area, avg_perimeter, avg_eccentricity, avg_filled_area,\
         roundness, circularity, avg_roundness, avg_circularity, total_nest_area, total_nest_perim,\
         std_dev_area, std_dev_perimeter, std_dev_eccentricity, std_dev_filled_area, std_dev_roundness,\
-        std_dev_circularity, name
+        std_dev_circularity, name, area_microns, avg_area_microns, perimeter_microns, avg_perimeter_microns,\
+        circularity_micron
 
 
-def write_csv(output_data, save_path):
+def write_csv(output_data, save_path, micron=False):
     # Writing the data file to as CSV
-    save_out = save_path + '/output_data.csv'
+    if micron:
+        name = 'output_micron_data'
+    else:
+        name = 'output_data'
+
+    save_out = save_path + '/%s.csv' % name
 
     with open(save_out, "wb") as f:
         writer = csv.writer(f)
