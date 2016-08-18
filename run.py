@@ -6,16 +6,8 @@ import matplotlib.pyplot as plt
 
 def main():
     # Main function that executes the functions desired above
-
     image_path = parameters.path()
-    png_hist = '/Users/aidan/Desktop/aidan_summer/Week_Tasks/Week_9/tma-extracted/tma_extracted_png'
-    test_hist = '/Users/aidan/Desktop/aidan_summer/Week_Tasks/Week_9/test'  #tma-extracted/tma_extracted_png'  # Path with image files (png)
-    path = '/Users/aidan/Desktop/aidan_summer/Week_Tasks/Week_9/save_images/segment1/' # Path to save CSV file
     path = parameters.save()
-    ### Uncomment this to run - Raquel
-    #test_hist = '/Users/engs1348/Raquel/Nottingham-TMAs/tma-extracted'
-    #png_hist = '/Users/engs1348/Raquel/Nottingham-TMAs/tma-extracted'
-    #path = '/Users/engs1348/Raquel/githubRepositoryWorkingFiles/Histology_Aidan'
 
     img_set = image_path  # Image set that is to be analyzed
     img_files = glob.glob(img_set + '/*.png')
@@ -123,15 +115,13 @@ def main():
                           avg_area_micron,
                           perim_micron,
                           avg_perim_micron,
-                          circularity_micron]
+                          circ_micron]
 
     # print output_data
     csv_save, micron_csv = parameters.csv_save()
+
     pipeline.write_csv(output_data, save_path=csv_save)
     pipeline.write_csv(output_micron_data, save_path=micron_csv, micron=True)
-
-    # output_path = '/Users/engs1348/Raquel/githubRepositoryWorkingFiles/Histology_Aidan'
-    # write_csv(output_data, save_path=output_path)
 
     plt.show()
 
