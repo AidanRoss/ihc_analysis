@@ -1,6 +1,8 @@
 # README
 (c) 2016
+
 Author: Aidan Ross
+
 Email: aidanrwross@gmail.com
 
 ## Analysis for IHC stained images
